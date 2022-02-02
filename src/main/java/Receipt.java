@@ -1,12 +1,14 @@
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class Receipt {
 
     private ArrayList<Item> itemList = new ArrayList<Item>();
     private double subtotal;
-    
+
+    public ArrayList<Item> getArrayList(){
+        return itemList;
+    }
     public Receipt(String... s){
         for(int i = 0; i < s.length; i++){
             itemList.add(new Item(s[i]));
@@ -22,13 +24,7 @@ public class Receipt {
         return subtotal;
     }
    
-    public void printReceipt(){
-        if (subtotal >= 1.00){
-            System.out.println("subtotal: "+ "£" + df.format(subtotal));
-        }else{
-            System.out.println("subotal: " + dfp.format(100*subtotal) + "p");
-        }
-    } 
+    
 
     public static void main(String[]args){
         Receipt r = new Receipt();
@@ -36,9 +32,8 @@ public class Receipt {
             r.itemList.add(new Item(args[i]));
         }
         r.setSubTotal();
-        r.printReceipt();  
+         
     }
 
-    private static final DecimalFormat df = new DecimalFormat("0.00");
-    private static final DecimalFormat dfp = new DecimalFormat("0");
+    
 }
