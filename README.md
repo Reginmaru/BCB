@@ -1,5 +1,6 @@
 # Instructions
-gradle init
+To check tests use "./gradlew test" on command line with gradle installed, or/and can navigate to src/main/java and type "java PriceBasket item1 item2 item3 ..."
+
 
 # Objects 
 Item,
