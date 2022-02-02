@@ -2,4 +2,10 @@
 
 # The way I thought about the task
 
-Using junit I construct unit tests to check if I can add items to my receipt/basket. 
+I constructed unit tests using junit in gradle. 
+
+0. Created Item class unit test for name and price.
+1. Create Item class with name and price.
+2. Encapsulated item class, as well as putting it in an ArrayList in Receipt class.
+
+4. I had firstly made it so 
