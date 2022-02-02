@@ -8,4 +8,3 @@ I constructed unit tests using junit in gradle.
 1. Create Item class with name and price.
 2. Encapsulated item class, as well as putting it in an ArrayList in Receipt class.
 
-4. I had firstly made it so 
