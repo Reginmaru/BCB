@@ -29,30 +29,34 @@ public class PriceBasket {
                 this.total -= apple10;
             }
         }
-        int twoSoups = 0;
+        int soupCount = 0;
         for (Item soups: r.getArrayList()){
             if(soups.getName().equals("Soup")){
-                twoSoups++;
+                soupCount++;
             } 
         }
-        double breadHalf = 0;
+        double breadDiscountPrice = 0;
+        int breadCount = 0;
         for (Item bread: r.getArrayList()){
             if(bread.getName().equals("Bread")){
-                breadHalf += 0.4*(twoSoups/2);
-                this.total -= breadHalf;
+                breadCount ++;
+                if(soupCount%(breadCount*2) ==0 | soupCount%(breadCount*2) ==1){
+                    breadDiscountPrice = 0.4*breadCount;
+                }
             }
         }
-        if(apple10 != 0 && breadHalf == 0){
+        this.total -= breadDiscountPrice;
+        if(apple10 != 0 && breadDiscountPrice == 0){
             System.out.println("Apples 10% off: -" + convert(apple10) +"\n");
         }
-        if(breadHalf != 0 && apple10 == 0){
-            System.out.println("Buy 2 soups get a bread half price: -" + convert(breadHalf) +"\n");
+        if(breadDiscountPrice != 0 && apple10 == 0){
+            System.out.println("Buy 2 soups get a bread half price: -" + convert(breadDiscountPrice) +"\n");
         }
-        if(apple10 !=0 & breadHalf != 0){
+        if(apple10 !=0 & breadDiscountPrice != 0){
             System.out.println("Apples 10% off: -" + convert(apple10));
-            System.out.println("Buy 2 soups get a bread half price: -" + convert(breadHalf) +"\n");
+            System.out.println("Buy 2 soups get a bread half price: -" + convert(breadDiscountPrice) +"\n");
         }
-        if(apple10 == 0 & breadHalf == 0){
+        if(apple10 == 0 & breadDiscountPrice == 0){
             System.out.println("(no offers available)\n");
         }
     }
