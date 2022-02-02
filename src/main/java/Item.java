@@ -15,15 +15,12 @@ public class Item {
         }
         else if(name.equals("Apples")){
             this.price = 1.00;
-        }else{ this.price = 0.00;}
-        
+        }else{ this.price = 0.00;}  
     }
-
     public String getName(){
         return this.name;
     }
     public Double getPrice(){
         return this.price;
-    }
-    
+    } 
 }

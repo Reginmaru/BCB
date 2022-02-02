@@ -4,11 +4,21 @@ import java.time.LocalDate;
 public class PriceBasket {
     private Double total;
     private Receipt r;
+    
     public PriceBasket(String... s){
         r = new Receipt(s);
     }
     public Receipt getReceipt(){
         return r;
+    }
+    public String convert(double amount){
+        String s= "";
+        if (amount >= 1.00){
+            s += "£" + df.format(amount);
+        }else{
+            s += dfp.format(100*amount) + "p";
+        }
+        return s;
     }
     public void calculateTotal(){
         this.total = r.getSubTotal();
@@ -33,14 +43,14 @@ public class PriceBasket {
             }
         }
         if(apple10 != 0 && breadHalf == 0){
-            System.out.println("Apples 10% off: -" + 100*apple10 + "p\n");
+            System.out.println("Apples 10% off: -" + convert(apple10) +"\n");
         }
         if(breadHalf != 0 && apple10 == 0){
-            System.out.println("Buy 2 soups get a bread half price: -" + 100*breadHalf +"p\n");
+            System.out.println("Buy 2 soups get a bread half price: -" + convert(breadHalf) +"\n");
         }
         if(apple10 !=0 & breadHalf != 0){
-            System.out.println("Buy 2 soups get a bread half price: -" + 100*breadHalf +"p");
-            System.out.println("Apples 10% off: -" + 100*apple10 + "p\n");
+            System.out.println("Apples 10% off: -" + convert(apple10));
+            System.out.println("Buy 2 soups get a bread half price: -" + convert(breadHalf) +"\n");
         }
         if(apple10 == 0 & breadHalf == 0){
             System.out.println("(no offers available)\n");
@@ -50,19 +60,12 @@ public class PriceBasket {
         return this.total;
     }
     public void printReceiptSubTotal(){
-        if (r.getSubTotal() >= 1.00){
-            System.out.println("Subtotal: "+ "£" + df.format(r.getSubTotal()) +"\n");
-        }else{
-            System.out.println("Subtotal: " + dfp.format(100*r.getSubTotal()) + "p\n");
-        }
+        System.out.println("SubTotal: " + convert(r.getSubTotal())+"\n");
     }
     public void printReceiptTotal(){
-        if (total >= 1.00){
-            System.out.println("Total: "+ "£" + df.format(total) + "\n");
-        }else{
-            System.out.println("Total: " + dfp.format(100*total) + "p\n");
-        }
+        System.out.println("Total: " + convert(total));
     } 
+    
     public static void main(String[] args){
         PriceBasket pb = new PriceBasket(args);
         pb.r.setSubTotal();
